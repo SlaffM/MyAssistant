@@ -1,0 +1,25 @@
+<h1>Listing shedules</h1> 
+<table>
+  <tr>
+    <p><%= "#{current_user.email}, #{current_user.id}"   %></p>
+  </tr>
+
+ <% @shedules.each do |shedule| %>
+  <tr>
+    <td><%= shedule.user_id %></td>
+    <td><%= shedule.created_at %></td>
+    <td><%= shedule.type_shedule %></td>
+    <td><%= shedule.favorite_town_from %></td>
+    <td><%= shedule.favorite_town_to %></td>
+    <td><%= link_to 'Show', shedule_path(shedule) %></td>
+    <td><%= link_to 'Edit', edit_shedule_path(shedule) %></td>
+    <td><%= link_to 'Destroy', shedule_path(shedule),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+ <% end %>
+  
+</table>
+
+
+<%= link_to 'New shedule', new_shedule_path %>
+<p><%= link_to 'Home', controller: 'welcome' %></p>

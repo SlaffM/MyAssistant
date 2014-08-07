@@ -1,2 +1,5 @@
 <h1>Hello, Rails!</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
+<h3><%= link_to 'My Articles', controller: 'articles' if user_signed_in?%></h3>
+
+<h3><%= link_to 'My Shedules', controller: 'shedules' if user_signed_in?%></h3>
+

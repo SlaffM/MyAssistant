@@ -1,0 +1,22 @@
+
+<p><%= @shedule.created_at %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @shedule.type_shedule %>
+</p>
+ 
+<p>
+  <strong>Town from:</strong>
+  <%= @shedule.favorite_town_from %>
+</p>
+
+<p>
+  <strong>Town to:</strong>
+  <%= @shedule.favorite_town_to %>
+</p>
+
+
+<%= link_to 'Back', shedules_path %>
+| <%= link_to 'Edit', edit_shedule_path(@shedule) %>
+
