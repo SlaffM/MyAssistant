@@ -1,5 +1,27 @@
 source 'https://rubygems.org'
 
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-remote'
+  gem 'factory_girl_rails'
+  gem 'faker', '~> 1.2.0'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'webmock'
+end
+
+gem 'devise'
+#gem 'cancancan'
+gem 'enumerize'
+gem 'state_machine'
+gem 'carrierwave'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
