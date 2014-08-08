@@ -6,8 +6,11 @@ Rails.application.routes.draw do
 	  resources :comments
   end
 
+  resources :shedules
+
   root 'welcome#index'
 end
+
 
 
 

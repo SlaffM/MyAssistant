@@ -1,2 +1,13 @@
 <h1>Hello, Rails!</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
+
+<% if user_signed_in? %>
+  <h3><%= link_to 'My Articles', controller: 'articles' %></h3>
+  <h3><%= link_to 'My Shedules', controller: 'shedules' %></h3>
+  <p><%= @images %></p>
+
+  <% @images.each do |image_url| %>
+  <img src= <%= image_url %> >
+  <% end %>
+
+<% end %>
+
