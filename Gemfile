@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+
+
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
@@ -11,6 +15,8 @@ group :development, :test do
   gem 'simple-rss'
 end
 
+
+
 group :test do
   gem 'rspec-rails'
   gem 'spork'
@@ -19,6 +25,8 @@ group :test do
   gem 'webmock'
 end
 
+#for testing
+gem 'google_image_api'
 gem 'devise'
 #gem 'cancancan'
 gem 'enumerize'

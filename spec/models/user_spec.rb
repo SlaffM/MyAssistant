@@ -6,7 +6,7 @@ RSpec.describe User do
     expect(FactoryGirl.build(:user)).to be_valid
   end
 
-  it { is_expected.to have_many(:shedules).with_foreign_key('user_id') }
+  it { is_expected.to have_many(:shedules)}#.with_foreign_key('user_id') }
 
 end
 
