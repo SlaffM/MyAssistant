@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  #http_basic_authenticate_with name: "slaff", password: "123", except: [:index, :show]
+  http_basic_authenticate_with name: "slaff", password: "123", except: [:index, :show]
 
   def new
     @article = Article.new
@@ -40,9 +40,9 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-	    redirect_to @article
+	redirect_to @article
     else
-	    render 'new'
+	render 'new'
     end
   end
 

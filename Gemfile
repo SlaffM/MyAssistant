@@ -1,9 +1,5 @@
 source 'https://rubygems.org'
 
-
-
-
-
 group :development, :test do
   gem 'pry-rails'
   gem 'pry'
@@ -11,11 +7,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.2.0'
-  gem 'feed-normalizer'
-  gem 'simple-rss'
 end
-
-
 
 group :test do
   gem 'rspec-rails'
@@ -25,8 +17,6 @@ group :test do
   gem 'webmock'
 end
 
-#for testing
-gem 'google_image_api'
 gem 'devise'
 #gem 'cancancan'
 gem 'enumerize'

@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 20140807091349) do
     t.datetime "updated_at"
   end
 
-  add_index "shedules", ["user_id"], name: "index_shedules_on_user_id", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
