@@ -1,7 +1,13 @@
 <h1>Hello, Rails!</h1>
-<h3><%= link_to 'My Articles', controller: 'articles' if user_signed_in?%></h3>
+<h3><%= link_to 'My Articles', controller: 'articles' if user_signed_in? %></h3>
 
-<h3><%= link_to 'My Shedules', controller: 'shedules' if user_signed_in?%></h3>
+<h3><%= link_to 'My Shedules', controller: 'shedules' if user_signed_in? %></h3>
 
-<p><%= @shedules %></p>
+
+<p>Listing shedules</p>
+<p><%= @shedules_type if user_signed_in? %></p>
+
+<% @test.each do |item| %>
+    <p><%=  link_to item.title, item.link %></p>
+<% end %>
 
