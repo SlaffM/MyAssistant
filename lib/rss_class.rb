@@ -1,6 +1,5 @@
 class RSSClass
   require 'simple-rss'
-  require 'feed-normalizer'
   require 'open-uri'
   require 'google_image_api'
   require 'json'
@@ -17,8 +16,8 @@ class RSSClass
         :imgsz => "small",
         :rsz => 8,
         :start => 8,
-        :imgtype  => "face",
-        :as_filetype => "png"
+        #:imgtype  => "clipart",
+        #:as_filetype => "png"
     })
 
     #result = JSON.parse(IO.read('tmp/img.json'), symbolize_names: true)
@@ -26,7 +25,7 @@ class RSSClass
     #result = result.values[0].values[0]
     images = []
     result.images.each do |img|
-      images << img['url']
+      images << [img['url'], img['tbWidth'], img['tbHeight']]
     end
 
     return images
