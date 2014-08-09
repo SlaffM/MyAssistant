@@ -1,28 +1,17 @@
-== README
+Проект MyAssistant это учебный проект.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+В нем используется api.Yandex  для отображения расписания транспорта
+Также будет реализовано отображение событий из Google.Calendar.
 
-Things you may want to cover:
+В будущем проект будет включать дополнительные возможности: быстрый перевод текста,
+отображение картинок по заданному слову и так далее.
 
-* Ruby version
+=================================
 
-* System dependencies
+MyAssistant project is an educational project.
 
-* Configuration
+It is used to display schedules api.Yandex transport
+There will also be implemented display events from Google.Calendar.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+In the future, the project will include additional features
+such as a quick translation of the text, images, for a given word, and so on.

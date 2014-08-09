@@ -1,15 +1,6 @@
-class RSSClass
-  require 'simple-rss'
-  require 'open-uri'
+class ImageClass
+
   require 'google_image_api'
-  require 'json'
-
-
-  def read_rss(rss_link)
-
-    feed_items = SimpleRSS.parse(open(rss_link)).items
-
-  end
 
   def get_images(term)
     result = GoogleImageApi.find(term, {
@@ -20,9 +11,6 @@ class RSSClass
         #:as_filetype => "png"
     })
 
-    #result = JSON.parse(IO.read('tmp/img.json'), symbolize_names: true)
-
-    #result = result.values[0].values[0]
     images = []
     result.images.each do |img|
       images << [img['url'], img['tbWidth'], img['tbHeight']]
@@ -30,10 +18,16 @@ class RSSClass
 
     return images
 
+
+    #for local debug
+
+    #result = JSON.parse(IO.read('tmp/img.json'), symbolize_names: true)
+
+    #result = result.values[0].values[0]
+
     # result.images.each do |img|
     #    img['url']
     # end
   end
 
 end
-
