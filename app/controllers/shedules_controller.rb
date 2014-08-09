@@ -39,7 +39,7 @@ class ShedulesController < ApplicationController
     @shedule = Shedule.new(shedule_params)
 
     @shedule.update_attribute(:user_id, current_user.id)
-    #@shedule.user_id = current_user.id
+
 
     if @shedule.save
       redirect_to @shedule
