@@ -27,6 +27,7 @@ end
 
 #for testing
 gem 'google_image_api'
+gem 'nokogiri'
 gem 'devise'
 #gem 'cancancan'
 gem 'enumerize'
