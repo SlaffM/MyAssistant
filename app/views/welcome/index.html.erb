@@ -1,2 +1,38 @@
-<h1>Hello, Rails!</h1>
-<%= link_to 'My Blog', controller: 'articles' %>
+
+<% if user_signed_in? %>
+
+  <h3><%= link_to 'My Articles', controller: 'articles' %></h3>
+  <h3><%= link_to 'My Shedules', controller: 'shedules' %></h3>
+
+    <% if @rss_feed %>
+    <p>RSS:</p>
+    <% @rss_feed.each do |item| %>
+        <p><%= link_to item[:title], item[:url] %></p>
+    <% end %>
+    <% end %>
+
+
+    <% if @lastfm %>
+    <p>Last.FM events:</p>
+    <% @lastfm.each do |item| %>
+        <p><%= link_to item[:title], item[:url] %></p>
+    <% end %>
+    <% end %>
+
+<% else %>
+
+    <div class="center hero-unit">
+      <h1>Welcome to the MyAssistant App</h1>
+
+      <h2>
+        This is the home page for my project on Rails:
+        <a href="https://github.com/SlaffM/MyAssistant">#Github</a>
+      </h2>
+
+      <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    </div>
+
+    <%#= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+
+<% end %>
+

@@ -1,0 +1,23 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "MyAssistant", '#', id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav pull-right">
+          <li><%= link_to "Home", root_path %></li>
+
+          <% if user_signed_in? %>
+              <li><p class = "navbar-text"><%= current_user.email %></p></li>
+            <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Register", new_user_registration_path %></li>
+          <% end %>
+
+          <%#= link_to "Help",    '#' %>
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
