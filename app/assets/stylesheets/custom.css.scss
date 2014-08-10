@@ -106,3 +106,8 @@ footer ul li {
   float: left;
   margin-left: 10px;
 }
+
+/* form devise */
+input[type=submit]    { @extend .btn-primary; @extend .btn-lg }
+input[type=email]     { @extend .form-control }
+input[type=password]  { @extend .form-control }
