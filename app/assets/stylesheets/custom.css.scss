@@ -129,3 +129,7 @@ footer ul li {
 input[type=submit]    { @extend .btn-primary; @extend .btn-lg }
 input[type=email]     { @extend .form-control }
 input[type=password]  { @extend .form-control }
+
+/* form shedule */
+input[type=text]      { @extend .form-control }
+
