@@ -4,15 +4,19 @@
   <h3><%= link_to 'My Articles', controller: 'articles' %></h3>
   <h3><%= link_to 'My Shedules', controller: 'shedules' %></h3>
 
+    <% if @rss_feed %>
     <p>RSS:</p>
     <% @rss_feed.each do |item| %>
         <p><%= link_to item[:title], item[:url] %></p>
     <% end %>
+    <% end %>
 
 
+    <% if @lastfm %>
     <p>Last.FM events:</p>
     <% @lastfm.each do |item| %>
         <p><%= link_to item[:title], item[:url] %></p>
+    <% end %>
     <% end %>
 
 <% else %>

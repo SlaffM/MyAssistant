@@ -3,15 +3,15 @@
     <div class="container">
       <%= link_to "MyAssistant", '#', id: "logo" %>
       <nav>
-        <ul class="nav pull-right">
-          <%= link_to "Home", root_path %>
+        <ul class="nav pull-right list-inline">
+          <li><%= link_to "Home", root_path %></li>
 
           <% if user_signed_in? %>
-              <%= current_user.email %>
-              <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+            <li><p class = "navbar-text"><%= current_user.email %></p></li>
+            <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
           <% else %>
-              <%= link_to "Log in", new_user_session_path %>
-              <%= link_to "Register", new_user_registration_path %>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Register", new_user_registration_path %></li>
           <% end %>
 
           <%#= link_to "Help",    '#' %>
