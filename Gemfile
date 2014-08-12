@@ -12,7 +12,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.2.0'
   gem 'feed-normalizer'
-  gem 'simple-rss'
+
 end
 
 
@@ -26,6 +26,7 @@ end
 
 #for testing
 gem 'google_image_api'
+gem 'simple-rss'
 gem 'nokogiri'
 gem 'devise'
 #gem 'cancancan'
