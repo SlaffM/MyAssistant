@@ -14,6 +14,7 @@ group :development, :test do
 end
 
 
+
 group :test do
   gem 'rspec-rails'
   gem 'spork'
@@ -22,10 +23,12 @@ group :test do
   gem 'webmock'
 end
 
-#for testing
-gem 'google_image_api'
-gem 'simple-rss'
-gem 'nokogiri'
+#capistrano
+gem 'capistrano', github: 'capistrano/capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano-rvm', github: "capistrano/rvm"
+
 gem 'devise'
 #gem 'cancancan'
 gem 'enumerize'
@@ -35,6 +38,16 @@ gem 'carrierwave'
 #for css
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+
+#google
+gem 'google_image_api'
+
+#for rss
+gem 'simple-rss'
+gem 'nokogiri'
+#gem 'curb', '0.8.6' install libcurl3, libcurl3-dev
+gem 'feedjira', github: 'feedjira/feedjira'
+
 
 #for heroku deploy
 gem 'rails_12factor', group: :production

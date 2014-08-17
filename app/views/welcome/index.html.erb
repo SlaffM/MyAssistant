@@ -4,10 +4,14 @@
   <h3><%= link_to 'My Articles', controller: 'articles' %></h3>
   <h3><%= link_to 'My Shedules', controller: 'shedules' %></h3>
 
+
+
     <% if @rss_feed %>
     <p>RSS:</p>
+    <%#= @rss_feed[0].title %>
     <% @rss_feed.each do |item| %>
-        <p><%= link_to item[:title], item[:url] %></p>
+    <%= link_to item.title, item.url %><br/>
+
     <% end %>
     <% end %>
 
