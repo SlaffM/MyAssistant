@@ -23,6 +23,7 @@ module MyAssistant
     # config.i18n.default_locale = :de
 
     config.autoload_paths += %W(#{config.root}/lib/rss)
+    config.autoload_paths += %W(#{config.root}/lib/queue_online)
     config.autoload_paths += %W(#{config.root}/lib/images)
     config.autoload_paths += %W(#{config.root}/lib/lastfm)
 
