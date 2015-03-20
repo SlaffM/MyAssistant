@@ -6,13 +6,20 @@
 
 
 
-    <% if @rss_feed %>
-    <p>RSS:</p>
-    <%#= @rss_feed[0].title %>
-    <% @rss_feed.each do |item| %>
-    <%= link_to item.title, item.url %><br/>
+    <% if @parsing %>
+        <p>RSS:</p>
+        <%#= @rss_feed[0].title %>
+        <% @parsing.each do |name| %>
+            <%= name %><br/>
+        <%end%>
+    <%end%>
 
-    <% end %>
+    <% if @rss_feed %>
+        <p>RSS:</p>
+        <%#= @rss_feed[0].title %>
+        <% @rss_feed.each do |item| %>
+            <%= link_to item.title, item.url %><br/>
+        <% end %>
     <% end %>
 
 
