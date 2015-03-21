@@ -2,7 +2,7 @@ class QueueOnline
   require 'open-uri'
 
   def get_html
-    url = 'http://er.zdravmo.ru/registratu/3/Himki_gorodskoi_okrug/khimkinskaya_detskaya_gorodskaya_poliklinika_4_pediatricheskoe_otdelenie/'
+    url = 'http://er.zdravmo.ru/registratu/3/Himki_gorodskoi_okrug/khimkinskaya_detskaya_gorodskaya_poliklinika_1_pediatricheskoe_otdelenie/'
 
     #root = Rails.root.to_s
     #url = './lib/parse/site/site.html'
@@ -13,9 +13,10 @@ class QueueOnline
 
     med = text.scan(%r{(\s{5,}.*)\s{5,}<span.*com.>(.*)(?=</span)})
 
-#talons = text.scan(%r{(#{medical[0]}|#{medical[1]}).*<span.*com">(.*)</span>})
+    h = med.map do |name|
+      {name[0].gsub(/\s{5,}/, '') => name[1]}
+    end
 
-    h = med.map {|name| {name[0].gsub(/\s{5,}/, '') => name[1]}}
     return h
   end
 
