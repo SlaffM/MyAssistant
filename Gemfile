@@ -28,6 +28,8 @@ gem 'capistrano', github: 'capistrano/capistrano'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 gem 'capistrano-rvm', github: "capistrano/rvm"
+#gem 'capistrano'
+#gem 'rvm-capistrano'
 
 gem 'devise'
 #gem 'cancancan'
