@@ -17,4 +17,6 @@
 /.idea
 /config/database.yml
 /test
-
+/Procfile
+/config/deploy/
+/shared/
