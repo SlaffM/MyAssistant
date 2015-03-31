@@ -4,6 +4,7 @@ default: &default
   timeout: 5000
   user:
   password:
+  host: localhost
 
 development:
   <<: *default

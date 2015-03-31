@@ -4,16 +4,6 @@
   <h3><%= link_to 'My Articles', controller: 'articles' %></h3>
   <h3><%= link_to 'My Shedules', controller: 'shedules' %></h3>
 
-
-
-    <% if @parsing  %>
-        <p>RSS:</p>
-        <%#= @rss_feed[0].title %>
-        <% @parsing.each do |name| %>
-            <%= name %><br/>
-        <%end%>
-    <%end%>
-
     <% if @rss_feed %>
         <p>RSS:</p>
         <%#= @rss_feed[0].title %>

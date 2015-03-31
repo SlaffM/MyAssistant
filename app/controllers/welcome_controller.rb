@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
       #@images = ImageClass.new.get_images(@shedule_type) if @shedule_type
 
 
-      @parsing = QueueOnline.new.get_html
+      #@parsing = QueueOnline.new.get_html
 
 
     end
