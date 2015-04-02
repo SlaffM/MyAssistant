@@ -7,9 +7,11 @@ lock '3.2.1'
 set :application, 'MyAssistant'
 application = 'MyAssistant'
 
+set :tmp_dir, "#{fetch(:home)}/tmp"
+
 #set :rvm_ruby_version, 'ruby 2.2.0'
 
-set :rvm_type, :user
+set :rvm_type, :system
 
 set :deploy_to, '/var/www/apps/MyAssistant'
 
