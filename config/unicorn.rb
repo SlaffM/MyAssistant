@@ -2,17 +2,17 @@
 
 # Set the working application directory
 # working_directory '/path/to/your/app'
-working_directory '/var/www/MyAssistant'
+working_directory '/var/www/apps/MyAssistant'
 
 # Unicorn PID file location
 # pid '/path/to/pids/unicorn.pid'
-pid '/var/www/MyAssistant/pids/unicorn.pid'
+pid '/var/www/apps/MyAssistant/pids/unicorn.pid'
 
 # Path to logs
 # stderr_path '/path/to/log/unicorn.log'
 # stdout_path '/path/to/log/unicorn.log'
-stderr_path '/var/www/MyAssistant/log/unicorn.log'
-stdout_path '/var/www/MyAssistant/log/unicorn.log'
+stderr_path '/var/www/apps/MyAssistant/log/unicorn.log'
+stdout_path '/var/www/apps/MyAssistant/log/unicorn.log'
 
 # Unicorn socket
 # listen '/tmp/unicorn.[application name].sock'
