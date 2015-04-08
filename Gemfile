@@ -21,6 +21,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rvm', github: "capistrano/rvm"
+  gem 'capistrano-ssh-doctor', '~> 1.0'
   #gem 'capistrano'
   #gem 'rvm-capistrano'
 
@@ -38,6 +39,7 @@ group :test do
 end
 
 
+gem 'foreman'
 
 gem 'devise'
 #gem 'cancancan'

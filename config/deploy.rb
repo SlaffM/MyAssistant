@@ -11,11 +11,16 @@ set :tmp_dir, "#{fetch(:home)}/tmp"
 
 #set :rvm_ruby_version, 'ruby 2.2.0'
 
-set :rvm_type, :system
+set :forward_agent, true
 
+set :rvm_type, :system
+set :user, 'deployer'
 set :deploy_to, '/var/www/apps/MyAssistant'
 
 set :repo_url, 'git@github.com:SlaffM/MyAssistant.git'
+set :branch, 'dev'
+set :use_sudo, false
+set :rails_env, "production"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -119,12 +124,12 @@ namespace :deploy do
   desc 'Setup'
   task :setup do
     on roles(:all) do
-      execute "mkdir  #{shared_path}/config/"
-      execute "mkdir  /var/www/apps/#{application}/run/"
-      execute "mkdir  /var/www/apps/#{application}/log/"
-      execute "mkdir  /var/www/apps/#{application}/socket/"
-      execute "mkdir #{shared_path}/system"
-      sudo "ln -s /var/log/upstart /var/www/log/upstart"
+      #execute "mkdir #{shared_path}/config/"
+      #execute "mkdir /var/www/apps/#{application}/run/"
+      #execute "mkdir /var/www/apps/#{application}/log/"
+      #execute "mkdir /var/www/apps/#{application}/socket/"
+      #execute "mkdir #{shared_path}/system"
+      #sudo "ln -s /var/log/upstart /var/www/log/upstart"
 
       upload!('shared/database.yml', "#{shared_path}/config/database.yml")
 
@@ -132,10 +137,10 @@ namespace :deploy do
 
 
       upload!('shared/nginx.conf', "#{shared_path}/nginx.conf")
-      sudo 'service nginx stop'
+      execute '/etc/init.d/nginx stop'
       sudo "rm -f /etc/nginx/nginx.conf"
       sudo "ln -s #{shared_path}/nginx.conf /etc/nginx/nginx.conf"
-      sudo 'service nginx start'
+      execute '/etc/init.d/nginx start'
 
       within release_path do
         with rails_env: fetch(:rails_env) do
@@ -167,7 +172,7 @@ namespace :deploy do
 
       within current_path do
         execute "cd #{current_path}"
-        execute :bundle, "exec foreman export upstart #{foreman_temp} -a #{application} -u us -l /var/www/apps/#{application}/log -d #{current_path}"
+        execute :bundle, "exec foreman export upstart #{foreman_temp} -a #{application} -u deployer -l /var/www/apps/#{application}/log -d #{current_path}"
       end
       sudo "mv #{foreman_temp}/* /etc/init/"
       sudo "rm -r #{foreman_temp}"

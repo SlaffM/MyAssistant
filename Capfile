@@ -5,6 +5,7 @@ require 'capistrano/deploy'
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails'
+require 'capistrano/ssh_doctor'
 
 # Include default deployment tasks
 #require 'capistrano/deploy'
