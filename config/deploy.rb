@@ -20,7 +20,7 @@ set :deploy_to, '/var/www/apps/MyAssistant'
 set :repo_url, 'git@github.com:SlaffM/MyAssistant.git'
 set :branch, 'dev'
 set :use_sudo, false
-set :rails_env, "production"
+set :rails_env, "development"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
