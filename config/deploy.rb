@@ -137,10 +137,10 @@ namespace :deploy do
 
 
       upload!('shared/nginx.conf', "#{shared_path}/nginx.conf")
-      execute '/etc/init.d/nginx stop'
+      sudo 'stop nginx'
       sudo "rm -f /etc/nginx/nginx.conf"
       sudo "ln -s #{shared_path}/nginx.conf /etc/nginx/nginx.conf"
-      execute '/etc/init.d/nginx start'
+      sudo 'start nginx'
 
       within release_path do
         with rails_env: fetch(:rails_env) do

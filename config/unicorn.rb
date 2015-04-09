@@ -17,6 +17,8 @@ stdout_path '/var/www/apps/MyAssistant/log/unicorn.log'
 # Unicorn socket
 # listen '/tmp/unicorn.[application name].sock'
 listen '/tmp/unicorn.MyAssistant.sock'
+listen 8080, :tcp_nopush => true
+
 
 # Number of processes
 # worker_processes 4
