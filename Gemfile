@@ -5,9 +5,6 @@ source 'https://rubygems.org'
 
 
 group :development, :test do
-
-  gem 'unicorn'
-
   gem 'pry-rails'
   gem 'pry'
   gem 'pry-nav'
