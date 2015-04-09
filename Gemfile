@@ -38,6 +38,7 @@ group :test do
   gem 'webmock'
 end
 
+gem 'unicorn'
 
 gem 'foreman'
 
