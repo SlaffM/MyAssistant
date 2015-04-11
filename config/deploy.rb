@@ -97,11 +97,13 @@ end
 
 namespace :deploy do
 
-  desc 'Restart application'
-  task :restart do
+  desc 'start stop restart application'
+  %w[start, stop, restart].each do |command|
+  desc 'manage unicorn'
+  task command do
   begin
-    on roles(:app), in: :sequence, wait: 5 do
-
+    on roles(:app), in: :sequence, wait: 1 do
+      execute "/etc/init.d/unicorn_#{fetch(:app)} #{command}"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
