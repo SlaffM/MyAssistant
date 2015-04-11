@@ -20,7 +20,7 @@ set :deploy_to, '/var/www/apps/MyAssistant'
 set :repo_url, 'git@github.com:SlaffM/MyAssistant.git'
 set :branch, 'dev'
 set :use_sudo, false
-set :rails_env, "development"
+set :rails_env, 'development'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -85,11 +85,11 @@ end
 namespace :git do
   desc 'Deploy'
   task :deploy do
-    ask(:message, "Commit message?")
+    ask(:message, 'Commit message?')
     run_locally do
-      execute "git add -A"
+      execute 'git add -A'
       execute "git commit -m '#{fetch(:message)}'"
-      execute "git push"
+      execute 'git push'
     end
   end
 end
@@ -101,7 +101,6 @@ namespace :deploy do
   %w[start, stop, restart].each do |command|
   desc 'manage unicorn'
   task command do
-  begin
     on roles(:app), in: :sequence, wait: 1 do
       execute "/etc/init.d/unicorn_#{fetch(:app)} #{command}"
       # Your restart mechanism here, for example:
@@ -140,13 +139,13 @@ namespace :deploy do
 
       upload!('shared/nginx.conf', "#{shared_path}/nginx.conf")
       sudo 'stop nginx'
-      sudo "rm -f /etc/nginx/nginx.conf"
-      sudo "ln -s #{shared_path}/nginx.conf /etc/nginx/nginx.conf"
+      sudo 'rm -f /etc/nginx/nginx.conf'
+      sudo 'ln -s #{shared_path}/nginx.conf /etc/nginx/nginx.conf'
       sudo 'start nginx'
 
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute :rake, "db:create"
+          execute :rake, 'db:create'
         end
       end
 
@@ -167,7 +166,7 @@ namespace :deploy do
   desc 'Foreman init'
   task :foreman_init do
     on roles(:all) do
-      foreman_temp = "/var/www/tmp/foreman"
+      foreman_temp = '/var/www/tmp/foreman'
       execute  "mkdir -p #{foreman_temp}"
       # Создаем папку current для того, чтобы foreman создавал upstart файлы с правильными путями
       execute "ln -s #{release_path} #{current_path}"
