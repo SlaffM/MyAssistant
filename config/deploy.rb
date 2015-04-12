@@ -7,6 +7,7 @@ lock '3.2.1'
 set :application, 'MyAssistant'
 application = 'MyAssistant'
 var_rails = 'rails'
+home_dir = '/var/www/MyAssistant/current'
 
 
 set :tmp_dir, "#{fetch(:home)}/tmp"
@@ -95,6 +96,48 @@ namespace :git do
     end
   end
 end
+
+desc 'test version of deploy'
+namespace :deploy do
+
+  desc 'start application'
+  task :start do
+      #on roles(:app), in: :sequence, wait: 1 do
+
+        execute "cd #{home_dir}"
+        execute "bundle exec unicorn_#{var_rails} -c #{home_dir}/config/unicorn.rb -E development"
+        #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
+        # Your restart mechanism here, for example:
+        # execute :touch, release_path.join('tmp/restart.txt')
+      #end
+  end
+
+  task :restart do
+    on roles(:app), in: :sequence, wait: 1 do
+
+      #execute "cd #{home_dir}"
+      sudo "/etc/init.d/unicorn restart"
+      #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+
+  task :stop do
+    #on roles(:app), in: :sequence, wait: 1 do
+
+      #execute "cd #{home_dir}"
+      sudo "/etc/init.d/unicorn stop"
+      #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+    #end
+  end
+
+end
+
+
+
 
 =begin
 
