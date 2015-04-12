@@ -6,6 +6,8 @@ lock '3.2.1'
 
 set :application, 'MyAssistant'
 application = 'MyAssistant'
+var_rails = 'rails'
+
 
 set :tmp_dir, "#{fetch(:home)}/tmp"
 
@@ -102,7 +104,7 @@ namespace :deploy do
   desc 'manage unicorn'
   task command do
     on roles(:app), in: :sequence, wait: 1 do
-      execute "/etc/init.d/unicorn_#{fetch(:app)} #{command}"
+      execute "/etc/init.d/unicorn_#{fetch(:var_rails)} #{command}"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
