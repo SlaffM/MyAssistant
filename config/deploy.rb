@@ -96,6 +96,7 @@ namespace :git do
   end
 end
 
+=begin
 
 namespace :deploy do
 
@@ -104,7 +105,8 @@ namespace :deploy do
   desc 'manage unicorn'
   task command do
     on roles(:app), in: :sequence, wait: 1 do
-      execute "/etc/init.d/unicorn_#{fetch(var_rails)} #{command}"
+
+      execute " /etc/init.d/unicorn_#{var_rails} #{command}"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
@@ -207,3 +209,4 @@ namespace :deploy do
 end
 
 
+=end
