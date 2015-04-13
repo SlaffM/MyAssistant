@@ -20,7 +20,7 @@ stdout_path "#{root}/tmp/log/unicorn.log"
 
 # Unicorn socket
 # listen '/tmp/unicorn.[application name].sock'
-listen "#{root}/tmp/unicorn.MyAssistant.sock"
+listen "#{root}/tmp/sockets/unicorn.MyAssistant.sock"
 #listen 8080, :tcp_nopush => true
 
 
