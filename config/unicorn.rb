@@ -15,8 +15,8 @@ pid "#{root}/tmp/pids/unicorn.pid"
 # Path to logs
 # stderr_path '/path/to/log/unicorn.log'
 # stdout_path '/path/to/log/unicorn.log'
-stderr_path "#{root}/tmp/log/unicorn.log"
-stdout_path "#{root}/tmp/log/unicorn.log"
+stderr_path "#{root}/log/unicorn.log"
+stdout_path "#{root}/log/unicorn.log"
 
 # Unicorn socket
 # listen '/tmp/unicorn.[application name].sock'
