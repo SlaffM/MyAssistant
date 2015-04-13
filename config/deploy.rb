@@ -48,7 +48,7 @@ set :rails_env, 'development'
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
+#set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
@@ -97,49 +97,6 @@ namespace :git do
   end
 end
 
-desc 'test version of deploy'
-namespace :deploy do
-
-  desc 'start application'
-  task :start do
-      #on roles(:app), in: :sequence, wait: 1 do
-
-        execute "cd #{home_dir}"
-        execute "bundle exec unicorn_#{var_rails} -c #{home_dir}/config/unicorn.rb -E development"
-        #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
-        # Your restart mechanism here, for example:
-        # execute :touch, release_path.join('tmp/restart.txt')
-      #end
-  end
-
-  task :restart do
-    on roles(:app), in: :sequence, wait: 1 do
-
-      #execute "cd #{home_dir}"
-      sudo "/etc/init.d/unicorn restart"
-      #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  task :stop do
-    #on roles(:app), in: :sequence, wait: 1 do
-
-      #execute "cd #{home_dir}"
-      sudo "/etc/init.d/unicorn stop"
-      #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    #end
-  end
-
-end
-
-
-
-
-=begin
 
 namespace :deploy do
 
@@ -149,6 +106,8 @@ namespace :deploy do
   task command do
     on roles(:app), in: :sequence, wait: 1 do
 
+      execute "cd #{home_dir}"
+      execute "bundle exec unicorn_#{var_rails} -c #{home_dir}/config/unicorn.rb -E development"
       execute " /etc/init.d/unicorn_#{var_rails} #{command}"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
@@ -239,11 +198,11 @@ namespace :deploy do
 
   after :updating, 'deploy:symlink'
 
-  after :setup, 'deploy:foreman_init'
+  #after :setup, 'deploy:foreman_init'
 
-  after :foreman_init, 'foreman:start'
+  #after :foreman_init, 'foreman:start'
 
-  before :foreman_init, 'rvm:hook'
+  #before :foreman_init, 'rvm:hook'
 
   before :setup, 'deploy:starting'
   before :setup, 'deploy:updating'
@@ -252,4 +211,3 @@ namespace :deploy do
 end
 
 
-=end
