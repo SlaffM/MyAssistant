@@ -8,6 +8,7 @@ set :application, 'MyAssistant'
 application = 'MyAssistant'
 var_rails = 'rails'
 home_dir = '/var/www/MyAssistant/current'
+home_dir_tmp = '/var/www/MyAssistant'
 
 
 set :tmp_dir, "#{fetch(:home)}/tmp"
@@ -48,7 +49,7 @@ set :rails_env, 'development'
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
+#set :linked_dirs, %w{#{home_dir_tmp/log} #{home_dir_tmp}/pids #{home_dir_tmp}/socket}
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
@@ -133,6 +134,17 @@ namespace :deploy do
       # execute :touch, release_path.join('tmp/restart.txt')
     #end
   end
+
+  desc 'Create symlink'
+  task :symlink do
+    on roles(:all) do
+      execute "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+      execute "ln -s #{shared_path}/Procfile #{release_path}/Procfile"
+      execute "ln -s #{shared_path}/system #{release_path}/public/system"
+    end
+  end
+
+  after :updating, 'deploy:symlink'
 
 end
 
