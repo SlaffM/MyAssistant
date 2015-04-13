@@ -98,74 +98,7 @@ namespace :git do
   end
 end
 
-desc 'test version of deploy'
 namespace :deploy do
-
-  desc 'start application'
-  task :start do
-      #on roles(:app), in: :sequence, wait: 1 do
-
-        execute "cd #{home_dir}"
-        execute "bundle exec unicorn_#{var_rails} -c #{home_dir}/config/unicorn.rb -E development"
-        #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
-        # Your restart mechanism here, for example:
-        # execute :touch, release_path.join('tmp/restart.txt')
-      #end
-  end
-
-  task :restart do
-    on roles(:app), in: :sequence, wait: 1 do
-
-      #execute "cd #{home_dir}"
-      sudo "/etc/init.d/unicorn restart"
-      #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
-
-  task :stop do
-    #on roles(:app), in: :sequence, wait: 1 do
-
-      #execute "cd #{home_dir}"
-      sudo "/etc/init.d/unicorn stop"
-      #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    #end
-  end
-
-  desc 'Create symlink'
-  task :symlink do
-    on roles(:all) do
-      execute "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-      execute "ln -s #{shared_path}/Procfile #{release_path}/Procfile"
-      execute "ln -s #{shared_path}/system #{release_path}/public/system"
-    end
-  end
-
-  after :updating, 'deploy:symlink'
-
-end
-
-
-
-
-=begin
-
-namespace :deploy do
-
-  desc 'start stop restart application'
-  %w[start, stop, restart].each do |command|
-  desc 'manage unicorn'
-  task command do
-    on roles(:app), in: :sequence, wait: 1 do
-
-      execute " /etc/init.d/unicorn_#{var_rails} #{command}"
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
 
   after :publishing, :restart
 
@@ -178,7 +111,7 @@ namespace :deploy do
     end
   end
 
-  end
+
 
 
   desc 'Setup'
@@ -251,11 +184,11 @@ namespace :deploy do
 
   after :updating, 'deploy:symlink'
 
-  after :setup, 'deploy:foreman_init'
+  #after :setup, 'deploy:foreman_init'
 
-  after :foreman_init, 'foreman:start'
+  #after :foreman_init, 'foreman:start'
 
-  before :foreman_init, 'rvm:hook'
+  #before :foreman_init, 'rvm:hook'
 
   before :setup, 'deploy:starting'
   before :setup, 'deploy:updating'
@@ -264,4 +197,3 @@ namespace :deploy do
 end
 
 
-=end
