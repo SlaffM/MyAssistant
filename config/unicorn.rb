@@ -30,3 +30,7 @@ worker_processes 2
 
 # Time-out
 timeout 30
+
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = "#{root}/Gemfile"
+end
