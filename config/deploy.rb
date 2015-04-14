@@ -7,7 +7,7 @@ lock '3.2.1'
 set :application, 'MyAssistant'
 application = 'MyAssistant'
 var_rails = 'rails'
-home_dir = '/var/www/MyAssistant/current'
+home_dir = '/var/www/apps/MyAssistant/current'
 
 
 set :tmp_dir, "#{fetch(:home)}/tmp"
@@ -107,8 +107,8 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 1 do
 
       execute "cd #{home_dir}"
-      execute "bundle exec unicorn_#{var_rails} -c #{home_dir}/config/unicorn.rb -E development"
-      execute " /etc/init.d/unicorn_#{var_rails} #{command}"
+      execute "bundle exec unicorn_#{var_rails} -c config/unicorn.rb -E development -D"
+      #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
