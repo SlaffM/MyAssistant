@@ -106,7 +106,7 @@ namespace :deploy do
   task command do
     on roles(:app), in: :sequence, wait: 1 do
 
-      execute "bundle exec #{home_dir}/unicorn_#{var_rails} -c config/unicorn.rb -E development -D"
+      execute :bundle, "exec #{home_dir}/unicorn_#{var_rails} -c config/unicorn.rb -E development -D"
       #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
