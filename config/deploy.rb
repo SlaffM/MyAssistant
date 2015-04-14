@@ -107,7 +107,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 1 do
       execute "cd #{fetch(:deploy_to)}"
       within "#{fetch(:deploy_to)}/current/" do
-        execute 'BUNDLE_GEMFILE=test/gemfiles/Gemfile.rails-3.0.x bundle exec unicorn_rails -c config/unicorn.rb -E development -D'
+        execute "BUNDLE_GEMFILE=#{fetch(:deploy_to)}/current/Gemfile bundle exec unicorn_rails -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E development -D"
       end
 
       #execute "cd #{home_dir}; bundle exec #{home_dir}/unicorn_#{var_rails} -c config/unicorn.rb -E development -D"
