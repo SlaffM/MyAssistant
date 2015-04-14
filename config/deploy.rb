@@ -107,9 +107,9 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 1 do
 
       with rails_env: fetch(:rails_env) do
-        execute :bundle, "exec unicorn_rails -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E development -D"
+        execute :bundle, "exec unicorn_rails -c config/unicorn.rb -E development -D"
       end
-      
+
       #within "cd #{fetch(:deploy_to)}/current/" do
       #  execute "bundle exec unicorn_rails -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E development -D"
       #end
