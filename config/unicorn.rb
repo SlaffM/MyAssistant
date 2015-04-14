@@ -4,6 +4,8 @@
 # working_directory '/path/to/your/app'
 root = "/var/www/apps/MyAssistant/current"
 
+#tmp_root = "/var/www/apps/MyAssistant"
+
 working_directory root
 
 # Unicorn PID file location
