@@ -109,7 +109,7 @@ namespace :deploy do
       within "#{fetch(:deploy_to)}/current/" do
         execute "bundle exec #{home_dir}/unicorn_#{var_rails} -c config/unicorn.rb -E development -D"
       end
-      
+
       #execute "cd #{home_dir}; bundle exec #{home_dir}/unicorn_#{var_rails} -c config/unicorn.rb -E development -D"
       #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
       # Your restart mechanism here, for example:
