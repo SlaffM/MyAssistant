@@ -105,10 +105,14 @@ namespace :deploy do
   desc 'manage unicorn'
   task command do
     on roles(:app), in: :sequence, wait: 1 do
-      execute "cd #{fetch(:deploy_to)}"
-      within "cd #{fetch(:deploy_to)}/current/" do
-        execute "bundle exec unicorn_rails -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E development -D"
+
+      with rails_env: fetch(:rails_env) do
+        execute :bundle, "exec unicorn_rails -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E development -D"
       end
+      
+      #within "cd #{fetch(:deploy_to)}/current/" do
+      #  execute "bundle exec unicorn_rails -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E development -D"
+      #end
 
       #execute "cd #{home_dir}; bundle exec #{home_dir}/unicorn_#{var_rails} -c config/unicorn.rb -E development -D"
       #execute " /etc/init.d/unicorn_#{var_rails} #{command}"
