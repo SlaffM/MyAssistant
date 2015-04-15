@@ -97,7 +97,6 @@ namespace :git do
   end
 end
 
-
 namespace :deploy do
 
   desc 'start stop restart application'
@@ -106,9 +105,9 @@ namespace :deploy do
   task command do
     on roles(:app), in: :sequence, wait: 1 do
 
-      with rails_env: fetch(:rails_env) do
-        execute :bundle, "exec unicorn_rails -c config/unicorn.rb -E development -D"
-      end
+      #with rails_env: fetch(:rails_env) do
+      #  execute :bundle, "exec unicorn_rails -c config/unicorn.rb -E development -D"
+      #end
 
       #within "cd #{fetch(:deploy_to)}/current/" do
       #  execute "bundle exec unicorn_rails -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E development -D"
@@ -134,7 +133,6 @@ namespace :deploy do
 
   end
 
-
   desc 'Setup'
   task :setup do
     on roles(:all) do
@@ -149,11 +147,10 @@ namespace :deploy do
 
       upload!('shared/Procfile', "#{shared_path}/Procfile")
 
-
       upload!('shared/nginx.conf', "#{shared_path}/nginx.conf")
-      sudo 'stop nginx'
+      #sudo 'stop nginx'
       sudo 'rm -f /etc/nginx/nginx.conf'
-      sudo 'ln -s #{shared_path}/nginx.conf /etc/nginx/nginx.conf'
+      sudo "ln -s #{shared_path}/nginx.conf /etc/nginx/nginx.conf"
       sudo 'start nginx'
 
       within release_path do
@@ -161,8 +158,6 @@ namespace :deploy do
           execute :rake, 'db:create'
         end
       end
-
-
 
     end
   end
@@ -205,11 +200,11 @@ namespace :deploy do
 
   after :updating, 'deploy:symlink'
 
-  #after :setup, 'deploy:foreman_init'
+  after :setup, 'deploy:foreman_init'
 
-  #after :foreman_init, 'foreman:start'
+  after :foreman_init, 'foreman:start'
 
-  #before :foreman_init, 'rvm:hook'
+  before :foreman_init, 'rvm:hook'
 
   before :setup, 'deploy:starting'
   before :setup, 'deploy:updating'
