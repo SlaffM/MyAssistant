@@ -63,6 +63,13 @@ namespace :foreman do
     end
   end
 
+  desc 'Start server'
+  task :start_manual do
+    on roles(:all) do
+      sudo "start #{application}"
+    end
+  end
+
   desc 'Stop server'
   task :stop do
     on roles(:all) do
@@ -136,12 +143,12 @@ namespace :deploy do
   desc 'Setup'
   task :setup do
     on roles(:all) do
-      execute "mkdir #{shared_path}/config/"
-      execute "mkdir /var/www/apps/#{application}/run/"
-      execute "mkdir /var/www/apps/#{application}/log/"
-      execute "mkdir /var/www/apps/#{application}/socket/"
-      execute "mkdir #{shared_path}/system"
-      sudo "ln -s /var/log/upstart /var/www/log/upstart"
+      #execute "mkdir #{shared_path}/config/"
+      #execute "mkdir /var/www/apps/#{application}/run/"
+      #execute "mkdir /var/www/apps/#{application}/log/"
+      #execute "mkdir /var/www/apps/#{application}/socket/"
+      #execute "mkdir #{shared_path}/system"
+      #sudo "ln -s /var/log/upstart /var/www/log/upstart"
 
       upload!('shared/database.yml', "#{shared_path}/config/database.yml")
 
@@ -177,7 +184,7 @@ namespace :deploy do
       foreman_temp = '/var/www/tmp/foreman'
       execute  "mkdir -p #{foreman_temp}"
       # Создаем папку current для того, чтобы foreman создавал upstart файлы с правильными путями
-      execute "ln -s #{release_path} #{current_path}"
+      #execute "ln -s #{release_path} #{current_path}"
 
       within current_path do
         execute "cd #{current_path}"
