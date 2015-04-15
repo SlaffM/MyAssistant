@@ -6,7 +6,7 @@ set -e
 # Feel free to change any of the following variables for your app:
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/var/www/apps/MyAssistant
-PID=$APP_ROOT/var/www/apps/MyAssistant/pids/unicorn.pid
+PID=$APP_ROOT/var/www/apps/MyAssistant/run/unicorn.pid
 CMD="$APP_ROOT/bin/unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
 action="$1"
 set -u
