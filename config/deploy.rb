@@ -136,19 +136,19 @@ namespace :deploy do
   desc 'Setup'
   task :setup do
     on roles(:all) do
-      #execute "mkdir #{shared_path}/config/"
-      #execute "mkdir /var/www/apps/#{application}/run/"
-      #execute "mkdir /var/www/apps/#{application}/log/"
-      #execute "mkdir /var/www/apps/#{application}/socket/"
-      #execute "mkdir #{shared_path}/system"
-      #sudo "ln -s /var/log/upstart /var/www/log/upstart"
+      execute "mkdir #{shared_path}/config/"
+      execute "mkdir /var/www/apps/#{application}/run/"
+      execute "mkdir /var/www/apps/#{application}/log/"
+      execute "mkdir /var/www/apps/#{application}/socket/"
+      execute "mkdir #{shared_path}/system"
+      sudo "ln -s /var/log/upstart /var/www/log/upstart"
 
       upload!('shared/database.yml', "#{shared_path}/config/database.yml")
 
       upload!('shared/Procfile', "#{shared_path}/Procfile")
 
       upload!('shared/nginx.conf', "#{shared_path}/nginx.conf")
-      #sudo 'stop nginx'
+      sudo 'stop nginx'
       sudo 'rm -f /etc/nginx/nginx.conf'
       sudo "ln -s #{shared_path}/nginx.conf /etc/nginx/nginx.conf"
       sudo 'start nginx'
