@@ -17,6 +17,7 @@ group :development, :test do
   gem 'capistrano', github: 'capistrano/capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  #gem 'rvm1-capistrano3', require: false
   gem 'capistrano-rvm', github: "capistrano/rvm"
   gem 'capistrano-ssh-doctor', '~> 1.0'
   #gem 'capistrano'

@@ -12,7 +12,9 @@ home_dir = '/var/www/apps/MyAssistant/current'
 
 set :tmp_dir, "#{fetch(:home)}/tmp"
 
-#set :rvm_ruby_version, 'ruby 2.2.0'
+set :rvm_ruby_version, 'ruby-<version>@<gemset>'
+set :bundle_flags, '--deployment --quiet'
+set :default_env, {rvm_bin_path: '/usr/local/rvm'}
 
 set :forward_agent, true
 
