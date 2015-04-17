@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  ENV['GEM_HOME']='/usr/local/rvm/gems/ruby-2.2.0'
+  ENV['GEM_PATH']='/usr/local/rvm/gems/ruby-2.2.0'
   # Code is not reloaded between requests.
   config.cache_classes = true
 

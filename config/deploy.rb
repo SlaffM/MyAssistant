@@ -27,6 +27,8 @@ set :branch, 'master'
 set :use_sudo, false
 set :rails_env, 'production'
 
+set :gemhome, '/usr/local/rvm/gems/ruby-2.2.0'
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
