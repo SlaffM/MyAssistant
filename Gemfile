@@ -59,6 +59,7 @@ gem 'nokogiri'
 #gem 'curb', '0.8.6' install libcurl3, libcurl3-dev
 gem 'feedjira', github: 'feedjira/feedjira'
 
+gem 'rake', '10.4.2'
 
 #for heroku deploy
 gem 'rails_12factor', group: :production
