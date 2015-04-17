@@ -1,15 +1,13 @@
 class ShedulesController < ApplicationController
 
   before_filter :authenticate_user!, except: [:show, :index]
-  before_filter :find_user,          only:   [:index, :create, :update, :edit, :destroy]
+  before_filter :find_user,          only:   [:index, :create, :update, :edit, :destroy, :show]
 
   def new
     @shedule = Shedule.new
   end
 
   def update
-
-    @shedule = @user.shedules.find(params[:id])
 
     if @shedule.update(shedule_params)
       redirect_to @shedule
@@ -19,11 +17,10 @@ class ShedulesController < ApplicationController
   end
 
   def edit
-    @shedule = Shedule.find(params[:id])
   end
 
   def destroy
-    @shedule = @user.shedules.find(params[:id])
+
     @shedule.destroy
 
     redirect_to shedules_path
@@ -34,7 +31,6 @@ class ShedulesController < ApplicationController
   end
 
   def show
-    @shedule = Shedule.find(params[:id])
   end
 
   def create
@@ -52,6 +48,7 @@ class ShedulesController < ApplicationController
 
     def find_user
       @user = User.where(id: current_user.id).first
+      @shedule = @user.shedules.where(id: params[:id]).first
     end
 
     def shedule_params
