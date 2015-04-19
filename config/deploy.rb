@@ -14,20 +14,19 @@ set :tmp_dir, "#{fetch(:home)}/tmp"
 
 set :rvm_ruby_version, '2.2.0'
 #set :bundle_flags, '--deployment --quiet'
-set :default_env, {rvm_bin_path: '/usr/local/rvm/'}
+set :default_env, {rvm_bin_path: '/home/deployer/.rvm'}
 
 set :forward_agent, true
 
-set :rvm_type, :system
+#set :rvm_type, :system
 set :user, 'deployer'
 set :deploy_to, '/var/www/apps/MyAssistant'
 
 set :repo_url, 'git@github.com:SlaffM/MyAssistant.git'
 set :branch, 'master'
 set :use_sudo, false
-set :rails_env, 'production'
 
-set :gemhome, '/usr/local/rvm/gems/ruby-2.2.0'
+#set :gemhome, '/usr/local/rvm/gems/ruby-2.2.0'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
