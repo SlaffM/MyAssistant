@@ -15,6 +15,7 @@ set :tmp_dir, "#{fetch(:home)}/tmp"
 set :rvm_ruby_version, '2.2.0'
 #set :bundle_flags, '--deployment --quiet'
 set :default_env, {rvm_bin_path: '/home/deployer/.rvm'}
+set :rails_env, 'production'
 
 set :forward_agent, true
 
