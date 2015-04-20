@@ -37,32 +37,37 @@ group :test do
 end
 
 group :production do
-
+  gem 'unicorn'
+  gem 'foreman'
 end
 
 group :production, :development, :test do
+  gem 'devise'
 
+  gem 'enumerize'
+  gem 'state_machine'
+  gem 'carrierwave'
 
+  #google
+  gem 'google_image_api'
+
+  #for css
+  gem 'bootstrap-sass'
+  gem 'autoprefixer-rails'
 
 end
 
 
-gem 'unicorn'
 
-gem 'foreman'
 
-gem 'devise'
-#gem 'cancancan'
-gem 'enumerize'
-gem 'state_machine'
-gem 'carrierwave'
 
-#for css
-gem 'bootstrap-sass'
-gem 'autoprefixer-rails'
 
-#google
-gem 'google_image_api'
+
+
+
+
+
+
 
 #for rss
 gem 'simple-rss'
@@ -97,15 +102,4 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
 
