@@ -20,4 +20,5 @@
 /Procfile
 /config/deploy/
 /shared/
-*.env.*
+/config/secrets.yml
+/config/deploy.rb
