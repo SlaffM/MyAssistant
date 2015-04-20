@@ -19,8 +19,8 @@ class WelcomeController < ApplicationController
 
       #@parsing = QueueOnline.new.get_html
 
-
     end
+
 
   end
 
