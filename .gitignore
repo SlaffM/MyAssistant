@@ -20,4 +20,4 @@
 /Procfile
 /config/deploy/
 /shared/
-.env
+*.env.*
