@@ -36,6 +36,17 @@ group :test do
   gem 'webmock'
 end
 
+group :production do
+  gem 'dotenv'
+end
+
+group :production, :development, :test do
+
+
+
+end
+
+
 gem 'unicorn'
 
 gem 'foreman'
