@@ -1,8 +1,8 @@
 
 <% if user_signed_in? %>
 
-  <h3><%= link_to 'My Articles', controller: 'articles' %></h3>
-  <h3><%= link_to 'My Shedules', controller: 'shedules' %></h3>
+  <h2><%= link_to 'My Articles', controller: 'articles' %></h2>
+  <h2><%= link_to 'My Shedules', controller: 'shedules' %></h2>
 
     <% if @rss_feed %>
         <p>RSS:</p>
