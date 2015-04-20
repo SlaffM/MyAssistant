@@ -37,7 +37,7 @@ group :test do
 end
 
 group :production do
-  gem 'dotenv'
+
 end
 
 group :production, :development, :test do
