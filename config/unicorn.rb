@@ -33,7 +33,7 @@ timeout 30
 
 
 
-before_exec do |server|
-  #ENV['BUNDLE_GEMFILE'] = "#{root}/Gemfile"
-  ENV['SECRET_KEY_BASE'] = "a062b70a2800dab5d10d4b4b83e2d0a3dd157609100f1c2927770ec5d033c4144036da844997a166eb8970e6962dcac7be820c9711ef67a3a71f4b0f2a6ff659"
-end
+#before_exec do |server|
+#  #ENV['BUNDLE_GEMFILE'] = "#{root}/Gemfile"
+#  ENV['SECRET_KEY_BASE'] = "a062b70a2800dab5d10d4b4b83e2d0a3dd157609100f1c2927770ec5d033c4144036da844997a166eb8970e6962dcac7be820c9711ef67a3a71f4b0f2a6ff659"
+#end
