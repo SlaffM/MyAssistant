@@ -8,6 +8,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.2.0'
   gem 'spring'  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'enumerize'
+
 
   #capistrano
   gem 'capistrano', github: 'capistrano/capistrano'
@@ -39,7 +41,7 @@ end
 group :production, :development, :test do
   gem 'devise'
 
-  gem 'enumerize'
+
   gem 'state_machine'
   gem 'carrierwave'
 
