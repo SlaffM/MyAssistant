@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
 
   def create
 
-    @article = Article.new(article_params)
+    @article = @user.articles.create(article_params)
 
     if @article.save
 	    redirect_to @article
@@ -49,13 +49,13 @@ class ArticlesController < ApplicationController
 
   private
 
-  def find_user
-    @user = User.where(id: current_user.id).first
-    @article = @user.articles.where(id: params[:id]).first
-  end
+    def find_user
+      @user = User.where(id: current_user.id).first
+      @article = @user.articles.where(id: params[:id]).first
+    end
 
-  def article_params
-    params.require(:article).permit(:title, :text) 
-  end
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end
 
 end

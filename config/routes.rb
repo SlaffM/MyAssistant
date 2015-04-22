@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  #get   'users/:id/index',        as: 'user_root'
-  #get   'users/:id/profile',  as: 'user_profile'
-
-  match 'users/:id', to: 'users#index', :as => :user_root, via: 'get'
-  match 'users/:id/profile', to: 'users#profile', :as => :user_profile, via: 'get'
+  #match 'users/:id', to: 'users#show', as: 'user_root', via: 'get'
+  match 'users/:id/profile', to: 'users#profile', as: 'user_profile', via: 'get'
+  match 'users/:id/shedules', to: 'shedules#index', as: 'user_shedules', via: 'get'
+  match 'users/:id/articles', to: 'articles#index', as: 'user_articles', via: 'get'
 
   devise_for :users
+
+  resources :users
 
   resources :articles do
 	  resources :comments
@@ -20,8 +21,6 @@ Rails.application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/',        to: 'static_pages#home',    via: 'get'
-  #match 'users/:id',to: 'users#index',          via: 'get'
-  #match 'users/:id/profile',to: 'users#profile',via: 'get'
 
   root 'welcome#index'
 
