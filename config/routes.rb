@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
-  get   'users/index', as: 'user_root'
-  get   'users/profile', as: 'user_profile'
+  #get   'users/:id/index',        as: 'user_root'
+  #get   'users/:id/profile',  as: 'user_profile'
+
+  match 'users/:id', to: 'users#index', :as => :user_root, via: 'get'
+  match 'users/:id/profile', to: 'users#profile', :as => :user_profile, via: 'get'
+
   devise_for :users
 
   resources :articles do
@@ -16,6 +20,8 @@ Rails.application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/',        to: 'static_pages#home',    via: 'get'
+  #match 'users/:id',to: 'users#index',          via: 'get'
+  #match 'users/:id/profile',to: 'users#profile',via: 'get'
 
   root 'welcome#index'
 

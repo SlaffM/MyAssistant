@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
-  #http_basic_authenticate_with name: "slaff", password: "123", except: [:index, :show]
+  before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :find_user,          only:   [:index, :create, :update, :edit, :destroy, :show]
 
   def new
     @article = Article.new
@@ -28,7 +29,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all
+    @articles = @user.articles
   end
 
   def show
@@ -47,6 +48,11 @@ class ArticlesController < ApplicationController
   end
 
   private
+
+  def find_user
+    @user = User.where(id: current_user.id).first
+    @article = @user.articles.where(id: params[:id]).first
+  end
 
   def article_params
     params.require(:article).permit(:title, :text) 
