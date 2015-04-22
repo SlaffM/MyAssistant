@@ -30,8 +30,8 @@ class ShedulesController < ApplicationController
     @shedules = @user.shedules
   end
 
-  def show
-  end
+  #def show
+  #end
 
   def create
 

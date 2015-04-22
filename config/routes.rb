@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-  get   'users/index', as: 'user_root'
-  get   'users/profile', as: 'user_profile'
+  #match 'users/:id', to: 'users#show', as: 'user_root', via: 'get'
+  match 'users/:id/profile', to: 'users#profile', as: 'user_profile', via: 'get'
+  match 'users/:id/shedules', to: 'shedules#index', as: 'user_shedules', via: 'get'
+  match 'users/:id/articles', to: 'articles#index', as: 'user_articles', via: 'get'
+
   devise_for :users
+
+  resources :users
 
   resources :articles do
 	  resources :comments
@@ -16,6 +21,7 @@ Rails.application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/',        to: 'static_pages#home',    via: 'get'
+  #match 'user/sign_in', to: 'static_pages#home',    via: 'get'
 
   root 'welcome#index'
 
@@ -30,13 +36,13 @@ end
   #get 'users/profile'
 
   #devise_for :users
- # get 'welcome/index'
+ # get 'welcome/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'welcome#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

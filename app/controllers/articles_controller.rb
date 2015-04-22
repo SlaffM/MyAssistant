@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
-  #http_basic_authenticate_with name: "slaff", password: "123", except: [:index, :show]
+  before_filter :authenticate_user!, except: [:show, :index]
+  before_filter :find_user,          only:   [:index, :create, :update, :edit, :destroy, :show]
 
   def new
     @article = Article.new
@@ -28,16 +29,16 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all
+    @articles = @user.articles
   end
 
-  def show
-    @article = Article.find(params[:id])
-  end
+  #def show
+  #  @article = @user.articles.find(params[:id])   #Article.find(params[:id])
+  #end
 
   def create
 
-    @article = Article.new(article_params)
+    @article = @user.articles.create(article_params)
 
     if @article.save
 	    redirect_to @article
@@ -48,8 +49,13 @@ class ArticlesController < ApplicationController
 
   private
 
-  def article_params
-    params.require(:article).permit(:title, :text) 
-  end
+    def find_user
+      @user = User.where(id: current_user.id).first
+      @article = @user.articles.where(id: params[:id]).first
+    end
+
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end
 
 end

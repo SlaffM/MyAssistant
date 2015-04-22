@@ -1,8 +1,8 @@
 
 class WelcomeController < ApplicationController
 
-  #before_filter :authenticate_user!, expect: [:index]
-  #before_filter :find_user,          only:   [:index]
+  #before_filter :authenticate_user!, expect: [:show]
+  #before_filter :find_user,          only:   [:show]
 
   def index
 
