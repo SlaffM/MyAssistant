@@ -22,4 +22,4 @@
 
 
 <%= link_to 'New article', new_article_path %>
-<p><%= link_to 'Home', controller: 'welcome' %></p>
+<p><%= link_to 'Home', user_root_path(current_user.id) %></p>

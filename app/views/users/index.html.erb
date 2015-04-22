@@ -1,0 +1,18 @@
+<h4><%= link_to 'My articles', controller: 'articles' %></h4>
+<h4><%= link_to 'My shedules', controller: 'shedules' %></h4>
+
+<% if @rss_feed %>
+    <p>RSS:</p>
+    <%#= @rss_feed[0].title %>
+    <% @rss_feed.each do |item| %>
+        <%= link_to item.title, item.url %><br/>
+    <% end %>
+<% end %>
+
+
+<% if @lastfm %>
+    <p>Last.FM events:</p>
+    <% @lastfm.each do |item| %>
+        <p><%= link_to item[:title], item[:url] %></p>
+    <% end %>
+<% end %>

@@ -1,12 +1,12 @@
 
 class WelcomeController < ApplicationController
 
-  before_filter :authenticate_user!, expect: [:index]
-  before_filter :find_user,          only:   [:index]
+  #before_filter :authenticate_user!, expect: [:index]
+  #before_filter :find_user,          only:   [:index]
 
   def index
 
-    if user_signed_in?
+    #if user_signed_in?
 
       #@shedule_type = @shedules.pluck(:type_shedule).first
       #@rss_feed = RSSClass.new.read_rss('http://0.tqn.com/6/g/ruby/b/rss2.xml')
@@ -19,17 +19,17 @@ class WelcomeController < ApplicationController
 
       #@parsing = QueueOnline.new.get_html
 
-    end
+    #end
 
 
   end
 
-  private
+  #private
 
-    def find_user
-      @user = User.where(id: current_user.id).first
-      @shedules = @user.shedules.where(user_id: current_user.id)
-    end
+  #  def find_user
+  #    @user = User.where(id: current_user.id).first
+  #    @shedules = @user.shedules.where(user_id: current_user.id)
+  #  end
 
 end
 
