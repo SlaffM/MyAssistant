@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 20150422102346) do
     t.integer  "user_id"
   end
 
-  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
-
   create_table "comments", force: true do |t|
     t.string   "commenter"
     t.text     "body"

@@ -23,11 +23,12 @@ end
 
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.14.0'
   gem 'spork'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'webmock'
+  gem 'capybara'
 end
 
 group :production do

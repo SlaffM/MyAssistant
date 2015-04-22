@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   end
 
   def profile
+
+
+
     #if user_signed_in?
 
       #@shedule_type = @shedules.pluck(:type_shedule).first

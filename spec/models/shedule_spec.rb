@@ -10,5 +10,5 @@ RSpec.describe Shedule do
     expect(FactoryGirl.build(:shedule)).to be_valid
   end
 
-  it { is_expected.to belong_to(:user) }
+  it {should belong_to(:user) }
 end
