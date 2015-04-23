@@ -133,3 +133,8 @@ input[type=password]  { @extend .form-control }
 /* form shedule */
 input[type=text]      { @extend .form-control }
 
+/* LIST #3 */
+#list1 { }
+#list1 ul { color:#000000;
+  font-size:18px; }
+#list1 ul li { line-height:30px; }

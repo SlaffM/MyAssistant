@@ -10,7 +10,6 @@ class QueueOnline
     url = './lib/parse/site/site.html'
     page = open(url)
     show_medical = []
-
     doc = Nokogiri::HTML(page)
 
     doc.css('.scroll-pane').css('li').each do |link|
@@ -21,12 +20,9 @@ class QueueOnline
       end
 
       title = title_el.text.strip
-      show_medical.push(
-          href: title
-      )
-    end
 
-    show_medical.map! {|s| s.values unless s.key("")}.compact!
+      show_medical << title unless title==""
+    end
 
     return show_medical
 
