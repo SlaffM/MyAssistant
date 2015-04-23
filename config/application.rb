@@ -26,10 +26,8 @@ module MyAssistant
 
     #config.secret_key_base = ENV['SECRET_KEY_BASE']
 
-    config.autoload_paths += %W(#{config.root}/lib/rss)
-    config.autoload_paths += %W(#{config.root}/lib/parse)
-    config.autoload_paths += %W(#{config.root}/lib/images)
-    config.autoload_paths += %W(#{config.root}/lib/lastfm)
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     config.generators do |g|
       g.test_framework :rspec, :view_specs => false,

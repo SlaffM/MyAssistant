@@ -4,14 +4,16 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_user#,          only:   [:show]
 
+  def index
+    redirect_to root_path
+  end
+
 
   def show
 
   end
 
   def profile
-
-
 
     #if user_signed_in?
 
