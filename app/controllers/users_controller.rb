@@ -11,24 +11,23 @@ class UsersController < ApplicationController
 
   def show
 
+
+    #@shedule_type = @shedules.pluck(:type_shedule).first
+    #@rss_feed = RSSClass.new.read_rss('http://0.tqn.com/6/g/ruby/b/rss2.xml')
+    #@rss_feed = RSSClass.new.read_rss('http://news.yandex.ru/galleries.rss')
+    #@lastfm = LastfmClass.new.get_events
+    #lasttm_test = Hash.from_xml(@lastfm)
+    #@my_json = lasttm_test
+    #@images = ImageClass.new.get_images(@shedule_type) if @shedule_type
+
+
+    @parsing = QueueOnline.new.get_html
+
+
+
   end
 
   def profile
-
-    #if user_signed_in?
-
-      #@shedule_type = @shedules.pluck(:type_shedule).first
-      #@rss_feed = RSSClass.new.read_rss('http://0.tqn.com/6/g/ruby/b/rss2.xml')
-      #@rss_feed = RSSClass.new.read_rss('http://news.yandex.ru/galleries.rss')
-      #@lastfm = LastfmClass.new.get_events
-      #lasttm_test = Hash.from_xml(@lastfm)
-      #@my_json = lasttm_test
-      #@images = ImageClass.new.get_images(@shedule_type) if @shedule_type
-
-
-      #@parsing = QueueOnline.new.get_html
-
-    #end
 
   end
 
