@@ -12,16 +12,20 @@ class QueueOnline
     show_medical = []
     doc = Nokogiri::HTML(page)
 
-    doc.css('.scroll-pane').css('li').each do |link|
+    doc.css('.scroll-pane').css('li a').each do |link|
 
-      title_el = link.at_css('a')
-      title_el.children.each do |child|
-        child.remove if child.text.include?('Записаться')
-      end
+      title = link.text.strip.split(/\s{5,}/) if link.children.size > 0
 
-      title = title_el.text.strip
+      show_medical << {title.at(0) => title.at(1)}
+      show_medical.uniq!
+      #title_el = link.at_css('a')
+      #title_el.children.each do |child|
+      #  child.remove if child.text.include?('Записаться')
+      #end
 
-      show_medical << title unless title==""
+      #title = title_el.text.strip
+
+      #show_medical << title unless title==""
     end
 
     return show_medical
